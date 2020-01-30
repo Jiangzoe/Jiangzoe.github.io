@@ -236,6 +236,16 @@ hello-world123456789101112131415var exp..." />
 
 </li>
 </ul>
+<h2 id="路由模块——router-js"><a href="#路由模块——router-js" class="headerlink" title="路由模块——router.js"></a>路由模块——router.js</h2><ul>
+<li><p>在<code>router.js</code>文件中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 创建一个路由容器</span></span><br><span class="line"><span class="keyword">var</span> router = express.Router()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 把路由都挂在到router容器中</span></span><br><span class="line">router.get(<span class="string">'/students'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req,res</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">router.get(<span class="string">'/students/news'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">req,res</span>) </span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 把router导出</span></span><br><span class="line"> <span class="built_in">module</span>.exports = router</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在入口文件中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> router = <span class="built_in">require</span>(<span class="string">'./router'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 把路由器挂在到app服务中</span></span><br><span class="line">app.use(router)</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
 
     </div>
     
@@ -253,6 +263,12 @@ hello-world123456789101112131415var exp..." />
     </div>
 </article>
 <div class="article-nav prev-next-wrap clearfix">
+    
+    <a href="/2020/01/30/MongoDB/" class="pre-post btn btn-default" title='MongoDB——非关系型数据库'>
+        <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+        <span class="hidden-xs">
+            MongoDB——非关系型数据库</span>
+    </a>
     
     
     <a href="/2020/01/06/nodejs/" class="next-post btn btn-default" title='Nodejs学习笔记'>
@@ -299,7 +315,7 @@ new Valine({
             Table of Contents
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hello-world"><span class="toc-text">hello-world</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本路由"><span class="toc-text">基本路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态服务"><span class="toc-text">静态服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置art-template"><span class="toc-text">配置art-template</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取表单数据"><span class="toc-text">获取表单数据</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hello-world"><span class="toc-text">hello-world</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本路由"><span class="toc-text">基本路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态服务"><span class="toc-text">静态服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置art-template"><span class="toc-text">配置art-template</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取表单数据"><span class="toc-text">获取表单数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#路由模块——router-js"><span class="toc-text">路由模块——router.js</span></a></li></ol>
         
     </div>
 </aside>
