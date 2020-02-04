@@ -1,0 +1,467 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <!--Setting-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta name="renderer" content="webkit|ie-comp|ie-stand">
+    <meta name="apple-mobile-web-app-capable" content="一只酱的博客">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no,email=no,adress=no">
+    <meta name="browsermode" content="application">
+    <meta name="screen-orientation" content="portrait">
+    <meta name="theme-version" content="1.2.3">
+    <meta name="root" content="/">
+    <link rel="dns-prefetch" href="http://yoursite.com">
+    <!--SEO-->
+
+<meta name="keywords" content="webpack" />
+
+
+<meta name="description" content="配置文件名称
+webpack 默认配置文件：webpack.config.js
+webpack配置组成：
+entry——打包的入口文件（指定默认的entry为：./src/index.js）
+o..." />
+
+
+<meta name="robots" content="all" />
+<meta name="google" content="all" />
+<meta name="googlebot" content="all" />
+<meta name="verify" content="all" />
+    <!--Title-->
+
+<title>
+    
+    webpack |
+    
+    一只酱的博客
+</title>
+
+<link rel="alternate" href="/atom.xml" title="一只酱的博客" type="application/atom+xml">
+
+
+<link rel="icon" href="/favicon.ico">
+
+    
+
+
+<link rel="stylesheet" href="/css/bootstrap.min.css?rev=3.3.7.css">
+<link rel="stylesheet" href="/css/font-awesome.min.css?rev=4.7.0.css">
+<link rel="stylesheet" href="/css/style.css?rev=@@hash.css">
+
+    
+<div class="hide">
+    <script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan class='cnzz_stat_icon_1263868967 hide' %3E%3Cscript%20src%3D%22https%3A%2F%2Fs95.cnzz.com%2Fz_stat.php%3Fweb_id%3D1272564536%22%3E%3C%2Fscript%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s19.cnzz.com/z_stat.php%3Fid%3D1263868967%26show%3Dpic1' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+</div>
+
+
+
+
+    
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+<!--[if lte IE 8]>
+<style>
+    html{ font-size: 1em }
+</style>
+<![endif]-->
+<!--[if lte IE 9]>
+<div style="ie">你使用的浏览器版本过低，为了你更好的阅读体验，请更新浏览器的版本或者使用其他现代浏览器，比如Chrome、Firefox、Safari等。</div>
+<![endif]-->
+<body>
+    <header class="main-header"  style="background-image:url(
+    http://snippet.shenliyang.com/img/banner.jpg)"
+     >
+    <div class="main-header-box">
+        <a class="header-avatar" href="/" title='John Doe'>
+            <img src="/img/avatar.jpg" alt="logo头像" class="img-responsive center-block">
+        </a>
+        <div class="branding">
+            <!--<h2 class="text-hide">Snippet主题,从未如此简单有趣</h2>-->
+            
+            <img src="/img/branding.png" alt="Snippet 博客主题" class="img-responsive center-block">
+            
+        </div>
+    </div>
+</header>
+    <nav class="main-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="navbar-header"><span class="nav-toggle-button collapsed pull-right" data-toggle="collapse" data-target="#main-menu" id="mnav">
+                        <span class="sr-only"></span>
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <a class="navbar-brand" href="http://yoursite.com">
+                        一只酱的博客</a>
+                </div>
+                <div class="collapse navbar-collapse" id="main-menu">
+                    <ul class="menu">
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/"><i class="fa "></i>
+                                Home</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/前端/"><i class="fa "></i>
+                                前端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/后端/"><i class="fa "></i>
+                                后端</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/categories/框架/"><i class="fa "></i>
+                                框架</a>
+                        </li>
+                        
+                        <li role="presentation" class="text-center">
+                            <a href="/archives/"><i class="fa "></i>
+                                时间轴</a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+    <section class="content-wrap">
+        <div class="container">
+            <div class="row">
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="webpack">
+            
+            webpack
+            
+        </h1>
+        <div class="post-meta">
+    
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a class="category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+            <a class="tag-link" href="/tags/webpack/" rel="tag">webpack</a>
+            
+        </span>
+    </span>
+    
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-clock-o"></i>
+        <span class="date-meta">
+            2020/02/04</span>
+    </span>
+    
+    
+</div>
+        
+        
+    </div>
+    
+    <div class="post-body post-content">
+        <h2 id="配置文件名称"><a href="#配置文件名称" class="headerlink" title="配置文件名称"></a>配置文件名称</h2><ul>
+<li><code>webpack</code> 默认配置文件：<code>webpack.config.js</code></li>
+<li><code>webpack</code>配置组成：<ul>
+<li><code>entry</code>——打包的入口文件（指定默认的<code>entry</code>为：<code>./src/index.js</code>）</li>
+<li><code>output</code> ——打包的输出（指定默认的<code>output</code>为：<code>./dist/main.js</code>）</li>
+<li><code>mode</code> ——环境</li>
+<li><code>rules</code> ——<code>Loader</code>配置</li>
+<li><code>plugin</code> ——插件配置</li>
+</ul>
+</li>
+</ul>
+<h2 id="hello-world"><a href="#hello-world" class="headerlink" title="hello-world"></a>hello-world</h2><ul>
+<li><p>创建一个文件目录</p>
+</li>
+<li><p>生成<code>package.json</code>文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装<code>webpack</code>和<code>webpack-cli</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install webpack webpack-cli --save-dev   //安装至dev-dependency中</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个<code>webpack.config.js</code>文件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: <span class="string">'./src/index.js'</span>,</span><br><span class="line">    output: &#123;</span><br><span class="line">        path: path.join(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">        filename: <span class="string">'bundle.js'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    mode: <span class="string">'production'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编写入口文件</p>
+</li>
+<li><p>打包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./node_modules/.bin/webpack</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>更便捷的打包方式为——在<code>package.json</code>文件中的<code>srcipt</code>中设置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>,</span><br><span class="line">    <span class="string">"build"</span>:<span class="string">"webpack"</span></span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置完毕后即可使用<code>npm run build</code>来进行打包。</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><h3 id="Entry"><a href="#Entry" class="headerlink" title="Entry"></a>Entry</h3><p><code>Entry</code>用来指定<code>webpack</code>的打包入口</p>
+<ul>
+<li><p>单入口——<code>entry</code>为一个字符串</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">entry: <span class="string">'./src/index.js'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多入口——<code>entry</code>为一个对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">entry: &#123;</span><br><span class="line">    app: <span class="string">'./src/app.js'</span>,</span><br><span class="line">        adminApp:<span class="string">'./src/adminApp.js'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p><code>output</code>用来告诉<code>webpack</code>如何将编译后的文件输出到磁盘</p>
+<ul>
+<li><p>单入口</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">	filename:<span class="string">'boundle.js'</span>.</span><br><span class="line">	path:__dirname + <span class="string">'dist'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>多入口</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">	filename:<span class="string">'[name].js'</span>,      <span class="comment">//通过占位符来保证名字的唯一性</span></span><br><span class="line">	path: __dirname + <span class="string">'dist'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="Loaders"><a href="#Loaders" class="headerlink" title="Loaders"></a>Loaders</h3><p><code>webpack</code>开箱即用只支持<code>JS</code>和<code>JSON</code>两种文件类型，通过Loaders去支持其他文件类型并把它们转化为有效的模块。</p>
+<p>本质是一个函数，接受源文件作为参数，返回转化的结果</p>
+<ul>
+<li><p>常见的Loaders</p>
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">babel-loader</td>
+<td>转换 ES6、ES7 等 JS 新特性语法</td>
+</tr>
+<tr>
+<td align="left">css-loader</td>
+<td>支持 .css 文件的加载和解析</td>
+</tr>
+<tr>
+<td align="left">less-loader</td>
+<td>将 less 转化为 css</td>
+</tr>
+<tr>
+<td align="left">ts-loader</td>
+<td>将 ts 转换为 js</td>
+</tr>
+<tr>
+<td align="left">file-loader</td>
+<td>进行图片、字体等的打包</td>
+</tr>
+<tr>
+<td align="left">raw-loader</td>
+<td>将文件以字符串形式导入</td>
+</tr>
+<tr>
+<td align="left">thread-loader</td>
+<td>多进程打包 js 和 css</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>用法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">	rules:[</span><br><span class="line">		&#123;<span class="attr">test</span>:<span class="regexp">/\/txt$/</span>, <span class="attr">use</span>: <span class="string">'raw-loader'</span>&#125;</span><br><span class="line">        <span class="comment">//test 指定匹配规则</span></span><br><span class="line">        <span class="comment">//use指定使用的loader名称</span></span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="plugins"><a href="#plugins" class="headerlink" title="plugins"></a>plugins</h3><p>插件用域bundle文件的优化，资源管理和环境变量注入。</p>
+<p>作用于整个构建过程</p>
+<ul>
+<li><p>常见的Plugins</p>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>CommonsChunkPlugin</td>
+<td>将chunks相同的模块代码提取成公共js</td>
+</tr>
+<tr>
+<td>CleanWebpackPlugin</td>
+<td>清理构建目录</td>
+</tr>
+<tr>
+<td>ExtractTextWebpackPlugin</td>
+<td>将css从bundle文件里提取成一个独立的css文件</td>
+</tr>
+<tr>
+<td>CopyWebpackPlugin</td>
+<td>将文件或者文件夹拷贝到构建的输出目录</td>
+</tr>
+<tr>
+<td>HtmlWebpackPlugin</td>
+<td>创建html文件去承载输出的bundle</td>
+</tr>
+<tr>
+<td>UglifyjsWebpackPlugin</td>
+<td>压缩js</td>
+</tr>
+<tr>
+<td>ZipWebpackPlugin</td>
+<td>将打包出的资源生成一个zip包</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>用法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">	<span class="keyword">new</span> HtmlWebpackPlugin(&#123;<span class="attr">template</span>: <span class="string">'./src/index.html'</span>&#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="mode"><a href="#mode" class="headerlink" title="mode"></a>mode</h3><p>用来指定当前的构建环境</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>production</td>
+<td>设置process.env.NODE_ENV的值为development。开启 NamedChunksPlugins 和 NamedModulesPlugin</td>
+</tr>
+<tr>
+<td>development</td>
+<td>设置process.env.NODE_ENV的值为production。开启 FlagDependencyUsagePlugin , FlagIncludedChunksPlugin, ModuleConcatenationPlugin , NoEmitOnErrorsPlugin , OccurrenceOrderPlugin, SideEffectsFlagPlugin和TerserPlugin</td>
+</tr>
+<tr>
+<td>none</td>
+<td>不开启任何优化选项</td>
+</tr>
+</tbody></table>
+<h2 id="进阶用法"><a href="#进阶用法" class="headerlink" title="进阶用法"></a>进阶用法</h2><h3 id="解析ES6"><a href="#解析ES6" class="headerlink" title="解析ES6"></a>解析ES6</h3><ul>
+<li>使用babel-loader</li>
+</ul>
+
+    </div>
+    
+    <div class="post-footer">
+        <div>
+            
+            转载声明：
+            商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
+            
+        </div>
+        <div>
+            
+        </div>
+    </div>
+</article>
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+    <a href="/2020/01/30/interview/" class="next-post btn btn-default" title='interview'>
+        <span class="hidden-lg">下一篇</span>
+        <span class="hidden-xs">
+            interview</span><i class="fa fa-angle-right fa-fw"></i>
+    </a>
+    
+</div>
+
+<div id="comments">
+    
+
+<div id="vcomments" class="valine"></div>
+
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="/assets/valine.min.js"></script>
+
+<script>
+new Valine({
+    av: AV,
+    el: '#vcomments',
+    appId: 'xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz',
+    appKey: 'erIpQac4azoCmgfBB7Dl9maa',
+    placeholder: '说点什么吧',
+    notify: false,
+    verify: true,
+    avatar: 'mm',
+    meta: 'nick,mail'.split(','),
+    pageSize: '10',
+    path: window.location.pathname,
+    lang: 'en'.toLowerCase()
+})
+</script>
+
+
+</div>
+
+                </main>
+                
+                    <aside id="article-toc" role="navigation" class="col-md-4">
+    <div class="widget">
+        <h3 class="title">
+            Table of Contents
+        </h3>
+        
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置文件名称"><span class="toc-text">配置文件名称</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hello-world"><span class="toc-text">hello-world</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本用法"><span class="toc-text">基本用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Entry"><span class="toc-text">Entry</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Output"><span class="toc-text">Output</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Loaders"><span class="toc-text">Loaders</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#plugins"><span class="toc-text">plugins</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mode"><span class="toc-text">mode</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进阶用法"><span class="toc-text">进阶用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解析ES6"><span class="toc-text">解析ES6</span></a></li></ol></li></ol>
+        
+    </div>
+</aside>
+                
+            </div>
+        </div>
+    </section>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="row">
+        </div>
+    </div>
+</footer>
+<a id="back-to-top" class="icon-btn hide">
+    <i class="fa fa-chevron-up"></i>
+</a>
+    <div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="busuanzi">
+    
+</div>
+            </div>
+            <div class="col-sm-12">
+                <span>Copyright &copy;
+                    2017
+                    
+                </span> |
+                <span>
+                    Powered by <a href="//hexo.io" class="copyright-links" target="_blank" rel="nofollow">Hexo</a>
+                </span> |
+                <span>
+                    Theme by <a href="//github.com/shenliyang/hexo-theme-snippet.git" class="copyright-links" target="_blank" rel="nofollow">Snippet</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script src="/js/app.js?rev=@@hash.js"></script>
+
+</body>
+</html>
