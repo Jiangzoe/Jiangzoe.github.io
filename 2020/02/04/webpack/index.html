@@ -352,7 +352,157 @@ o..." />
 </tr>
 </tbody></table>
 <h2 id="进阶用法"><a href="#进阶用法" class="headerlink" title="进阶用法"></a>进阶用法</h2><h3 id="解析ES6"><a href="#解析ES6" class="headerlink" title="解析ES6"></a>解析ES6</h3><ul>
-<li>使用babel-loader</li>
+<li><p>安装<code>babel-loader</code>、<code>@babel/core</code>、<code>@babel/preset-env</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i @babel/core @babel/preset-env babel-loader -D</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建<code>.babelrc</code>文件并配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">"presents"</span>: [<span class="string">"@babel/preset-env"</span>] <span class="comment">//增加es6的babel present配置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>webpack.config.js</code>中设置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rules: [</span><br><span class="line">	&#123;</span><br><span class="line">		test:<span class="regexp">/.js$/</span>,</span><br><span class="line">		use:<span class="string">'babel-loader'</span></span><br><span class="line">	&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="解析React-Jsx"><a href="#解析React-Jsx" class="headerlink" title="解析React Jsx"></a>解析React Jsx</h3><ul>
+<li><p>安装<code>react-dom</code> 、<code>@babel/preset-react</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i react-dom @babel/preset-react -D</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>.babelrc</code>中配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">"presents"</span>: [<span class="string">"@babel/preset-react"</span>]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>webpack.config.js</code>中设置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">rules: [</span><br><span class="line">	&#123;</span><br><span class="line">		test:<span class="regexp">/.js$/</span>,</span><br><span class="line">		use:<span class="string">'babel-loader'</span></span><br><span class="line">	&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="解析css"><a href="#解析css" class="headerlink" title="解析css"></a>解析css</h3><ul>
+<li><p>安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i style-loader css-loader -D</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>webpack.config.js</code>中配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">rules: [</span><br><span class="line">	&#123;</span><br><span class="line">		test: <span class="regexp">/.css$/</span>,</span><br><span class="line">		use: [</span><br><span class="line">			<span class="string">'style-loader'</span>,  <span class="comment">//将样式通过&lt;style&gt;标签插入到head中</span></span><br><span class="line">			<span class="string">'css-loader'</span></span><br><span class="line">			<span class="comment">// loader调用方式为链式调用，即从右到左。所以应当先写style-loader</span></span><br><span class="line">		]</span><br><span class="line">	&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="解析less、sass"><a href="#解析less、sass" class="headerlink" title="解析less、sass"></a>解析less、sass</h3><ul>
+<li><p>安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i less less-loader -D</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">rules: [</span><br><span class="line">	&#123;</span><br><span class="line">		test: <span class="regexp">/.less$/</span>,</span><br><span class="line">		use: [</span><br><span class="line">			<span class="string">'style-loader'</span>, </span><br><span class="line">			<span class="string">'css-loader'</span>,</span><br><span class="line">			<span class="string">'less-loader'</span></span><br><span class="line">		]</span><br><span class="line">	&#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="解析图片"><a href="#解析图片" class="headerlink" title="解析图片"></a>解析图片</h3><ul>
+<li><p>安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i file-loader -D</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	test: <span class="regexp">/.(png|jpg|gif|jpeg)$/</span>,</span><br><span class="line">	use: <span class="string">'file-loader'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="解析字体"><a href="#解析字体" class="headerlink" title="解析字体"></a>解析字体</h3><p>解析字体同样是使用<code>file-loader</code></p>
+<ul>
+<li><p>配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	test: <span class="regexp">/.(woff|woff2|eot|ttf|otf)$/</span>,</span><br><span class="line">	use: <span class="string">'file-loader'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><strong>解析字体和图片还可以使用<code>url-loader</code>，相比较于<code>file-loader</code>它可以设置较小资源自动<code>base64</code></strong></p>
+<ul>
+<li><p>配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	test: <span class="regexp">/.(png|jpg|gif|jpeg)$/</span>,</span><br><span class="line">	use: [&#123;</span><br><span class="line">		loader: <span class="string">'url-loader'</span>,</span><br><span class="line">		options: &#123;</span><br><span class="line">			limit:<span class="number">10240</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="文件监听"><a href="#文件监听" class="headerlink" title="文件监听"></a>文件监听</h3><p>文件监听是指在发现源码发生变化时，自动重新构建出新的输出文件，有两种实现方式：</p>
+<p>缺陷——每次需要手动刷新浏览器</p>
+<ul>
+<li><p>启动<code>webpack</code>命令时，带上<code>--watch</code> 参数</p>
+<ul>
+<li><p>在<code>package.json</code>中配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">	<span class="string">"watch"</span>: <span class="string">"webpack --watch"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>在配置<code>webpack.config.js</code>中设置 <code>watch:true</code></p>
+<p>原理分析：轮询判断文件的最后编辑时间是否变化，某个文件发生了变化，并不会立刻告诉监听者，而是先缓存起来，等<code>aggregateTimeout</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.export = &#123;</span><br><span class="line">   <span class="comment">//默认为flase </span></span><br><span class="line">	watch: <span class="literal">true</span>,</span><br><span class="line">    <span class="comment">//只有开启监听模式时，watchOptions才有意义</span></span><br><span class="line">	watchOption: &#123;</span><br><span class="line">        <span class="comment">//默认为空，不监听的文件夹</span></span><br><span class="line">		ignored: <span class="regexp">/node_modules/</span>,</span><br><span class="line">        <span class="comment">//监听到变化后会等300ms再去执行，默认300ms</span></span><br><span class="line">		aggregateTimeout: <span class="number">300</span>,</span><br><span class="line">        <span class="comment">//判断文件是否发生变化是通过不断询问系统指定文件有没有变化实现的，默认每秒问1000次</span></span><br><span class="line">		poll: <span class="number">1000</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="热更新——webpack-dev-server"><a href="#热更新——webpack-dev-server" class="headerlink" title="热更新——webpack-dev-server"></a>热更新——webpack-dev-server</h3><ul>
+<li>不刷新浏览器</li>
+<li>不输出文件，而是放在内存中</li>
+<li>使用<code>HotModuleReplacementPlugin</code>插件</li>
+</ul>
+<p>使用</p>
+<ul>
+<li><p>在<code>package.json</code>文件中配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">	<span class="string">"dev"</span>: <span class="string">"webpack-dev-server --open"</span>  <span class="comment">//open参数：每次构建完成后自动开启浏览器</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>webpack.config.js</code>文件中配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mode: <span class="string">'development'</span> <span class="comment">//只在开发环境中使用</span></span><br><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> webpack.HotModuleReplacementPlugin() <span class="comment">//需要引入webpack</span></span><br><span class="line">    ],</span><br><span class="line">    devServer: [</span><br><span class="line">        contentBase: <span class="string">'./dist'</span>, <span class="comment">//服务基础目录</span></span><br><span class="line">        hot: <span class="literal">true</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h3 id="文件指纹"><a href="#文件指纹" class="headerlink" title="文件指纹"></a>文件指纹</h3><ul>
+<li><code>hash</code>：和整个项目的构建相关，只要项目文件有修改，整个项目构建的<code>hash</code>值就会改变</li>
+<li><code>Chunkhash</code>：和<code>webpack</code>打包的chunk有关，不同的<code>entry</code>会生成不同的<code>chunkhash</code>值</li>
+<li><code>Contenthash</code>：根据文件内容来定义hash，文件内容不变，则<code>contenthash</code>不变</li>
+</ul>
+<p>使用策略：</p>
+<ul>
+<li><p><code>js</code>的文件指纹</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">output: &#123;</span><br><span class="line">    path: path.join(__dirname, <span class="string">'dist'</span>),</span><br><span class="line">        filename: <span class="string">'[name]_[chunkhash:8].js'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字体、图片的文件指纹</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    test: <span class="regexp">/.(png|jpg|gif|jpeg)$/</span>,</span><br><span class="line">    use: [</span><br><span class="line">        &#123;</span><br><span class="line">            loader: <span class="string">'file-loader'</span>,</span><br><span class="line">            options: &#123;</span><br><span class="line">                name: <span class="string">'[name]_[hash:8].[ext]'</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>css</code>的文件指纹</p>
+<ul>
+<li><p>安装插件，把<code>css</code>提取出来成为一个独立文件，不能与<code>style-loader</code>一同使用。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i mini-css-extract-plugin -D</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用插件并配置</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">plugins: [</span><br><span class="line">    <span class="keyword">new</span> MiniCssExtractPlugin(&#123;</span><br><span class="line">        filename: <span class="string">'[name]_[contenthash:80].css'</span></span><br><span class="line">    &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    test: <span class="regexp">/.css$/</span>,</span><br><span class="line">    use: [</span><br><span class="line">        MiniCssExtractPlugin.loader,</span><br><span class="line">        <span class="string">'css-loader'</span>,</span><br><span class="line">        <span class="string">'less-loader'</span></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件压缩"><a href="#文件压缩" class="headerlink" title="文件压缩"></a>文件压缩</h3><ul>
+<li><p><code>html</code>压缩</p>
+<ul>
+<li><p>安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i html-webpack-plugin -D</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引用插件，一个页面对应一个<code>HtmlWebpackPlugin</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">    template: path.join(__dirname, <span class="string">'src/index.html'</span>),  <span class="comment">//html模板所在位置</span></span><br><span class="line">    filename: <span class="string">'index.html'</span>,  <span class="comment">// 指定打包出来的文件名称</span></span><br><span class="line">    chunks: [<span class="string">'index'</span>],   <span class="comment">// html使用哪些chunk</span></span><br><span class="line">    inject: <span class="literal">true</span>,  </span><br><span class="line">    minify: &#123;</span><br><span class="line">        html5: <span class="literal">true</span>,</span><br><span class="line">        collapseWhitespace: <span class="literal">true</span>,</span><br><span class="line">        preserveLineBreaks: <span class="literal">false</span>,</span><br><span class="line">        minifyCSS: <span class="literal">true</span>,</span><br><span class="line">        minifyJS: <span class="literal">true</span>,</span><br><span class="line">        removeComments: flase</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><code>css</code>压缩</p>
+<p>使用<code>optimize-css-assets-webpack-plugin</code>插件和<code>cssnano</code>预处理器</p>
+<ul>
+<li><p>安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i optimize-css-assets-webpack-plugin cssnano -D</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>引用插件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> OptimizeCssAssetsPlugin(&#123;</span><br><span class="line">	assetNameRegExp: <span class="regexp">/\.css$/g</span>,</span><br><span class="line">	cssProcessor: <span class="built_in">require</span>(<span class="string">'cssnano'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p><code>js</code>压缩</p>
+<p>内置了<code>uglifyjs-webpack-plugin</code>插件，自动压缩<code>js</code>文件。</p>
+</li>
 </ul>
 
     </div>
@@ -417,7 +567,7 @@ new Valine({
             Table of Contents
         </h3>
         
-        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置文件名称"><span class="toc-text">配置文件名称</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hello-world"><span class="toc-text">hello-world</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本用法"><span class="toc-text">基本用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Entry"><span class="toc-text">Entry</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Output"><span class="toc-text">Output</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Loaders"><span class="toc-text">Loaders</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#plugins"><span class="toc-text">plugins</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mode"><span class="toc-text">mode</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进阶用法"><span class="toc-text">进阶用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解析ES6"><span class="toc-text">解析ES6</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#配置文件名称"><span class="toc-text">配置文件名称</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hello-world"><span class="toc-text">hello-world</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本用法"><span class="toc-text">基本用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Entry"><span class="toc-text">Entry</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Output"><span class="toc-text">Output</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Loaders"><span class="toc-text">Loaders</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#plugins"><span class="toc-text">plugins</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mode"><span class="toc-text">mode</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进阶用法"><span class="toc-text">进阶用法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#解析ES6"><span class="toc-text">解析ES6</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解析React-Jsx"><span class="toc-text">解析React Jsx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解析css"><span class="toc-text">解析css</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解析less、sass"><span class="toc-text">解析less、sass</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解析图片"><span class="toc-text">解析图片</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#解析字体"><span class="toc-text">解析字体</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件监听"><span class="toc-text">文件监听</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#热更新——webpack-dev-server"><span class="toc-text">热更新——webpack-dev-server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件指纹"><span class="toc-text">文件指纹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件压缩"><span class="toc-text">文件压缩</span></a></li></ol></li></ol>
         
     </div>
 </aside>
